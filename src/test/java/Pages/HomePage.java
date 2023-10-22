@@ -5,4 +5,9 @@ public class HomePage extends BasePage{
     public String getPageURL() {
         return "https://magento.softwaretestingboard.com/";
     }
+
+
+
+
+
 }
