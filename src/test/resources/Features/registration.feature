@@ -1,4 +1,4 @@
-Feature: feature to test registration functionality
+Feature: Registration functionality
 
   Background:
     Given user is on registration page

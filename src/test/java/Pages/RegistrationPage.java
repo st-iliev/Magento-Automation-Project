@@ -36,4 +36,7 @@ public class RegistrationPage extends BasePage{
         sendKeys(passwordField,password);
         sendKeys(confirmPasswordField,confirmPassword);
     }
+    public void clickOnCreateAccountButton(){
+        click(createAnAccountButton);
+    }
 }

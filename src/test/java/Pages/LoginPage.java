@@ -22,15 +22,18 @@ public class LoginPage extends BasePage {
     protected By registrationFormTitle = By.id("block-new-customer-heading");
     protected By createAnAccountButton = By.cssSelector(".action.create.primary");
 
-    public void signIn(String email,String password) {
-        clear(emailField);
-        clear(passwordField);
+    public void fillSignInForm(String email,String password) {
         sendKeys(emailField, email);
         sendKeys(passwordField,password);
-        click(signInButton);
     }
     public void createAnAccount(){
         click(createAnAccountButton);
     }
-
+    public void clickOnSigninButton(){
+        click(signInButton);
+    }
+    public void clearSignInForm(){
+        clear(emailField);
+        clear(passwordField);
+    }
 }
