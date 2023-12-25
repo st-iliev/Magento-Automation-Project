@@ -1,9 +1,9 @@
-package Runners;
+package runners;
 
-import Pages.BasePage;
-import Pages.HomePage;
-import Pages.LoginPage;
-import Pages.RegistrationPage;
+import com.magneto.pages.BasePage;
+import com.magneto.pages.HomePage;
+import com.magneto.pages.LoginPage;
+import com.magneto.pages.RegistrationPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;

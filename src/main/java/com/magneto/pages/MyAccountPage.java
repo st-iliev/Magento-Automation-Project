@@ -1,4 +1,4 @@
-package Pages;
+package com.magneto.pages;
 
 import org.openqa.selenium.By;
 
@@ -8,7 +8,7 @@ public class MyAccountPage extends BasePage {
         return "https://magento.softwaretestingboard.com/customer/account/";
     }
 
-    protected By pageTitle = By.xpath("//*[@data-ui-id='page-title-wrapper']");
+    private By pageTitle = By.cssSelector(".base");
     protected By myAccount = By.xpath("//a[@href='https://magento.softwaretestingboard.com/customer/account/']");
     protected By myOrders = By.xpath("//a[@href='https://magento.softwaretestingboard.com/sales/order/history/']");
     protected By myDownloadableProducts = By.xpath("//a[@href='https://magento.softwaretestingboard" +

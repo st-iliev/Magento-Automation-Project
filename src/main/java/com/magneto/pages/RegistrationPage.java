@@ -1,4 +1,4 @@
-package Pages;
+package com.magneto.pages;
 
 import org.openqa.selenium.By;
 
@@ -7,7 +7,7 @@ public class RegistrationPage extends BasePage{
     public String getPageURL() {
         return "https://magento.softwaretestingboard.com/customer/account/create/";
     }
-    protected By pageTitle = By.xpath("//*[@data-ui-id='page-title-wrapper']");
+    private By pageTitle = By.cssSelector(".base");
     protected By personInformationTitle = By.xpath("//*[@class='fieldset create info']//*[@class='legend']/span");
     protected By firstNameField = By.id("firstname");
     protected By firstNameFieldErrorMsg = By.id("firstname-error");
