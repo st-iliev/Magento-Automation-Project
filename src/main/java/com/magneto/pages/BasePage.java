@@ -13,6 +13,7 @@ public abstract class BasePage {
     public void setDriver(WebDriver driver){
         BasePage.driver = driver;
     }
+    private By demoMessage = By.xpath("//*[@class='message global demo']//p");
     //Header
     private By signIn = By.xpath("//*[@class='panel header']//*[@class='headerlinks']//a[contains(.,'Sign In')]");
     private By createAnAccount =By.xpath("//*[@class='panel header']//*[@class='header " +
@@ -26,7 +27,12 @@ public abstract class BasePage {
     private By signOut =By.linkText("Sign Out");
     private By logo = By.cssSelector(".logo");
     private By searchField = By.id("search_mini_form");
+    //Cart
     private By showCart = By.cssSelector(".action.showcart");
+    private By proceedToCheckoutButton = By.id("top-cart-btn-checkout");
+    private By viewAndEditCart = By.linkText("View and Edit Cart");
+    private By productsInCart = By.id("mini-cart");
+
 
     //Navigation bar
     private By whatsNews = By.id("ui-id-3");
@@ -60,7 +66,12 @@ public abstract class BasePage {
     private By pageTitle = By.id("page-title-heading");
 
     //Message
-    protected By message = By.xpath(("//*[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"));
+    private By message = By.xpath(("//*[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"));
+    private By shoppingCartLink = By.linkText("shopping cart");
+    //Shopping Options
+    private By filterShoppingTitles = By.id("narrow-by-list");
+    private List<WebElement> shoppingFilters = finds(filterShoppingTitles);
+    // TODO for all subCategory
 
     //SideBar
     private By compareProductsTitle = By.id("block-compare-heading");
@@ -72,10 +83,22 @@ public abstract class BasePage {
     private By closePopupWindow = By.xpath("//button[@class='action-close']");
     private By okButtonForRemovingCompareProduct = By.className("action-primary action-accept");
     private By cancelButtonForRemovingCompareProduct = By.className("action-secondary action-dismiss");
+    private By recentlyOrderedText = By.id("block-reorder-heading");
+    private By recentlyOrderedProducts = By.id("cart-sidebar-reorder");
+    private List<WebElement> products = finds(recentlyOrderedProducts);
+    private By recenlyOrderedAddToCartButton = By.xpath("//*[@id='cart-sidebar-reorder-advice-container']//button" +
+            "[@title='Add to Cart']");
+    private By recentlyOrderedViewAllLink = By.linkText("View All");
     private By myWishListTitle = By.linkText("My Wish List");
     private By myWishListCount = By.cssSelector(".counter");
     private By myWishListProducts = By.id("wishlist-sidebar");
     private By goToWishList = By.linkText("Go to Wish List");
+    //Main
+    private By modeGrid = By.id("mode-grid");
+    private By modeList = By.id("mode-list");
+    private By toolbarAmount = By.id("toolbar-amount");
+    private By sortByDropDown = By.id("sorter");
+    private By showProductPerPageDropDown = By.id("limiter");
 
     //Footer
     private By writeForUs = By.linkText("Write for us");
@@ -149,7 +172,7 @@ public abstract class BasePage {
         click(sale);
         return new SalePage();
     }
-    public void clickOnSubCategorynNavigationBar(WebDriver driver, By categoryName , By subCategory){
+    public void clickOnSubCategoryOnNavigationBar(WebDriver driver, By categoryName , By subCategory){
         Actions actions = new Actions(driver);
         actions.moveToElement((WebElement) categoryName).perform();
         click(subCategory);
