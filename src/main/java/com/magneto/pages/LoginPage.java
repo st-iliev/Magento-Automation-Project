@@ -9,7 +9,6 @@ public class LoginPage extends BasePage {
         return "https://magento.softwaretestingboard.com/customer/account/login";
     }
     private By pageTitle = By.cssSelector(".base");
-    protected By alertMsg = By.xpath(("//*[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"));
     protected By loginFormTitle = By.id("block-customer-login-heading");
     protected By loginFormText = By.cssSelector(".field.note");
     protected By emailField = By.id("email");

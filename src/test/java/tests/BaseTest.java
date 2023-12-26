@@ -1,15 +1,12 @@
-package runners;
+package tests;
 
-import com.magneto.pages.BasePage;
-import com.magneto.pages.HomePage;
-import com.magneto.pages.LoginPage;
-import com.magneto.pages.RegistrationPage;
+import com.magneto.pages.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.BeforeMethod;
 
 
@@ -18,7 +15,13 @@ public class BaseTest {
     protected BasePage basePage;
     protected HomePage homePage;
     protected LoginPage loginPage;
+    protected ForgotPasswordPage forgotPasswordPage;
     protected RegistrationPage registrationPage;
+    protected MyAccountPage myAccountPage;
+    protected SalePage salePage;
+    protected  TrainingPage trainingPage;
+    protected  VideoDownloadPage videoDownloadPage;
+    protected  WhatsNewPage whatsNewPage;
     private final String baseURL = "https://magento.softwaretestingboard.com/";
     @BeforeClass
     public void setUp(){
@@ -32,6 +35,13 @@ public class BaseTest {
         basePage.setDriver(driver);
         homePage = new HomePage();
         loginPage = new LoginPage();
+        forgotPasswordPage = new ForgotPasswordPage();
+        registrationPage = new RegistrationPage();
+        myAccountPage = new MyAccountPage();
+        salePage = new SalePage();
+        trainingPage = new TrainingPage();
+        videoDownloadPage = new VideoDownloadPage();
+        whatsNewPage = new WhatsNewPage();
     }
     @AfterMethod
     public void takeScreenShotForFailedTest(){

@@ -59,6 +59,24 @@ public abstract class BasePage {
     private By homeLink = By.linkText("Home");
     private By pageTitle = By.id("page-title-heading");
 
+    //Message
+    protected By message = By.xpath(("//*[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"));
+
+    //SideBar
+    private By compareProductsTitle = By.id("block-compare-heading");
+    private By compareProductsCount = By.cssSelector(".counter.qty");
+    private By compareProducts = By.id("compare-items");
+    private By compareButton = By.linkText("Compare");
+    private By clearAllLink = By.id("compare-clear-all");
+    private By textForRemovingCompareProduct = By.id("modal-content-51");
+    private By closePopupWindow = By.xpath("//button[@class='action-close']");
+    private By okButtonForRemovingCompareProduct = By.className("action-primary action-accept");
+    private By cancelButtonForRemovingCompareProduct = By.className("action-secondary action-dismiss");
+    private By myWishListTitle = By.linkText("My Wish List");
+    private By myWishListCount = By.cssSelector(".counter");
+    private By myWishListProducts = By.id("wishlist-sidebar");
+    private By goToWishList = By.linkText("Go to Wish List");
+
     //Footer
     private By writeForUs = By.linkText("Write for us");
     private By subscribe = By.linkText("Subscribe to our mailing list");
@@ -131,16 +149,29 @@ public abstract class BasePage {
         click(sale);
         return new SalePage();
     }
-    public void clickOnSubCategory(WebDriver driver, By categoryName , By subCategory){
+    public void clickOnSubCategorynNavigationBar(WebDriver driver, By categoryName , By subCategory){
         Actions actions = new Actions(driver);
         actions.moveToElement((WebElement) categoryName).perform();
         click(subCategory);
     }
-   public void clickOnSubSubCategory(WebDriver driver,By categoryName , By subCategory , By subSubCategory){
+   public void clickOnSubSubCategoryOnNavigationBar(WebDriver driver,By categoryName , By subCategory ,
+                                                  By subSubCategory){
        Actions actions = new Actions(driver);
        actions.moveToElement((WebElement) categoryName).perform();
        actions.moveToElement((WebElement) subCategory).perform();
        click(subSubCategory);
    }
+    public void clickOnSubCategoryOnSideBar(By subCategoryType,String subCategoryName){
+        var allSubCategory = finds(subCategoryType);
+        for(var subCategory : allSubCategory){
+            if(getText((By)subCategory).equals(subCategoryName)){
+                click((By)subCategory);
+            }
+        }
+    }
+    public int GetNumberOfCompareProducts(By locator){
+        var compareProducts = finds(locator).size();
+        return compareProducts;
+    }
 }
 
