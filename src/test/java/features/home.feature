@@ -1,4 +1,4 @@
-Feature: Testing HomePage
+Feature:  Home page
   Background:
     Given  the user is on the home page
 

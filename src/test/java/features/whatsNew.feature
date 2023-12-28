@@ -1,8 +1,8 @@
-Feature: Testing WhatsNew page
+Feature:  WhatsNew page
   Background:
     Given the user is on the whatsnew page
 
-  Scenario Outline : User is redirect to correct women's subcategory
+  Scenario Outline : User is redirect to the selected women's subcategory
     When user clicks on the "<womensSubCategory>" on left side bar
     Then user should be redirect on "<womensSubCategory>" page
     And  all products from this category should be displayed.
@@ -15,7 +15,7 @@ Feature: Testing WhatsNew page
       | Pants                 |
       | Shorts                |
 
-  Scenario Outline : User is redirect to correct men's subcategory
+  Scenario Outline : User is redirect to the selected men's subcategory
     When user clicks on the "<mensSubCategory>" on left side bar
     Then user should be redirect on "<mensSubCategory>" page
     And  all products from this category should be displayed.

@@ -1,4 +1,4 @@
-Feature: Testing BasePage
+Feature:  Base page
 
   Scenario: The User logs out successfully
     Given the user is logged in
@@ -63,7 +63,7 @@ Feature: Testing BasePage
     And   the user has products in their wishlist
     When  the user scrolls down until they see the text "My Wish List" on the left sidebar
     Then  click on "cross" symbol on right side of first product in "My Wish List"
-    And   a successful message "Leah Yoga Top has been removed from your Wish List." should be displayed under pagetitle
+    And   a successful message "Leah Yoga Top has been removed from your Wish List." should be displayed
     And   the product should be removed from "My Wish List"
 
   Scenario Outline: Missing products in "My Wish List"
