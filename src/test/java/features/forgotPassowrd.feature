@@ -1,4 +1,4 @@
-Feature:  ForgotPassword Functionality
+Feature:  ForgotPassword functionality
   Background:
     Given the user is on the forgot password page
 
