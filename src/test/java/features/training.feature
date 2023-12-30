@@ -19,7 +19,12 @@ Feature: Training page
     Then  the user is redirected to the Video Download page
     And   page title "Video Download" should be displayed
 
-  Scenario: User is successful redirect from side bar to Video Download page
-    When  the user clicks on "Video Download" link on left side bar
-    Then  the user is redirected to the Video Download page
-    And   page title "Video Download" should be displayed
+  Scenario Outline:  User is redirect to the selected training's subcategory
+    Given the user is <loginStatus>
+    When  user clicks on the "<trainingSubcategory>" on left side bar
+    Then  user should be redirect on Training "<trainingSubcategory>" page
+    And   a message "We can't find products matching the selection." should be displayed
+    Examples:
+      | trainingSubcategory | loginStatus   |
+      | Video Download      | loggin in     |
+      | Video Download      | non-logged in |

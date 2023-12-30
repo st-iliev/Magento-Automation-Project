@@ -1,4 +1,5 @@
 Feature:  Checkout functionality
+
   Background:
     Given the user is logged in
     And   he user has products in their cart

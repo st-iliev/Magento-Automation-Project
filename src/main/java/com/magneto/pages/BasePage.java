@@ -100,6 +100,9 @@ public abstract class BasePage {
     private By sortByDropDown = By.id("sorter");
     private By showProductPerPageDropDown = By.id("limiter");
 
+    private By hotSellersProducts = By.cssSelector(".product-items.widget-product-grid");
+    private List<WebElement> hotProducts = finds(hotSellersProducts);
+
     //Footer
     private By writeForUs = By.linkText("Write for us");
     private By subscribe = By.linkText("Subscribe to our mailing list");
@@ -109,6 +112,7 @@ public abstract class BasePage {
     private By policty = By.linkText("Privacy and Cookie Policy");
     private By advanceSerch = By.linkText("Advanced Search");
     private By copyRight = By.className("copyright");
+
 
     public abstract String getPageURL();
     protected void open() {driver.navigate().to(getPageURL());}
@@ -152,9 +156,9 @@ public abstract class BasePage {
         click(whatsNews);
         return new WhatsNewPage();
     }
-    public Womenpage clickOnWomen(){
+    public WomenPage clickOnWomen(){
         click(women);
-        return new Womenpage();
+        return new WomenPage();
     }
     public MenPage clickOnMen(){
         click(men);

@@ -4,8 +4,8 @@ Feature:  WhatsNew page
 
   Scenario Outline : User is redirect to the selected women's subcategory
     When user clicks on the "<womensSubCategory>" on left side bar
-    Then user should be redirect on "<womensSubCategory>" page
-    And  all products from this category should be displayed.
+    Then user should be redirect on Women "<womensSubCategory>" page
+    And  all products from this category should be displayed
     Examples:
       | womensSubCategory     |
       | Hoodies & Sweatshirts |
@@ -17,8 +17,8 @@ Feature:  WhatsNew page
 
   Scenario Outline : User is redirect to the selected men's subcategory
     When user clicks on the "<mensSubCategory>" on left side bar
-    Then user should be redirect on "<mensSubCategory>" page
-    And  all products from this category should be displayed.
+    Then user should be redirect on Men "<mensSubCategory>" page
+    And  all products from this category should be displayed
     Examples:
       | mensSubCategory       |
       | Hoodies & Sweatshirts |
