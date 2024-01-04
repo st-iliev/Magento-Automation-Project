@@ -18,7 +18,7 @@ public abstract class BasePage {
     private By signIn = By.xpath("//*[@class='panel header']//*[@class='headerlinks']//a[contains(.,'Sign In')]");
     private By createAnAccount =By.xpath("//*[@class='panel header']//*[@class='header " +
             "links']//a[contains(.,'Create an Account')]");
-    private By login = By.className("logged-in");
+    private By login = By.xpath("//*[@class='panel header']//*[@class='logged-in']");
     private By nonLogin = By.className("not-logged-in");
 
     private By customerMenuButton = By.xpath("//button[@tupe='button']");
@@ -196,9 +196,18 @@ public abstract class BasePage {
             }
         }
     }
-    public int GetNumberOfCompareProducts(By locator){
+    public int getNumberOfCompareProducts(By locator){
         var compareProducts = finds(locator).size();
         return compareProducts;
+    }
+    public String getPageMessage(){
+        return getText(message);
+    }
+    public String userIsLogin(){
+        return getText(login);
+    }
+    public String userIsNonLogin(){
+        return getText(nonLogin);
     }
 }
 

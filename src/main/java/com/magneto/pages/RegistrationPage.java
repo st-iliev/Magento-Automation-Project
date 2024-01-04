@@ -39,4 +39,20 @@ public class RegistrationPage extends BasePage{
     public void clickOnCreateAccountButton(){
         click(createAnAccountButton);
     }
+    public String getRequiredMessageForFirstNameField(){
+        return getText(firstNameFieldErrorMsg);
+    }
+    public String getRequiredMessageForLastNameField(){
+        return getText(lastNameFieldErrorMsg);
+    }
+    public String getRequiredMessageForEmailField(){
+        return getText(emailFieldErrorMsg);
+    }
+    public String getRequiredMessageForPasswordField(){
+        return getText(passwordFieldErrorMsg);
+    }
+    public String getRequiredMessageForConfirmPasswordField(){
+        return getText(confirmPasswordFieldErrorMsg);
+    }
+
 }
