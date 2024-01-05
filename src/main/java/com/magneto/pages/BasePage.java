@@ -1,8 +1,6 @@
 package com.magneto.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
@@ -10,13 +8,15 @@ import java.util.List;
 public abstract class BasePage {
 
     public static WebDriver driver;
-    public void setDriver(WebDriver driver){
+
+    public void setDriver(WebDriver driver) {
         BasePage.driver = driver;
     }
+
     private By demoMessage = By.xpath("//*[@class='message global demo']//p");
     //Header
     private By signIn = By.xpath("//*[@class='panel header']//*[@class='headerlinks']//a[contains(.,'Sign In')]");
-    private By createAnAccount =By.xpath("//*[@class='panel header']//*[@class='header " +
+    private By createAnAccount = By.xpath("//*[@class='panel header']//*[@class='header " +
             "links']//a[contains(.,'Create an Account')]");
     private By login = By.xpath("//*[@class='panel header']//*[@class='logged-in']");
     private By nonLogin = By.className("not-logged-in");
@@ -24,7 +24,7 @@ public abstract class BasePage {
     private By customerMenuButton = By.xpath("//button[@tupe='button']");
     private By myAccount = By.linkText("My Account");
     private By myWishList = By.linkText("My Wish List");
-    private By signOut =By.linkText("Sign Out");
+    private By signOut = By.linkText("Sign Out");
     private By logo = By.cssSelector(".logo");
     private By searchField = By.id("search_mini_form");
     //Cart
@@ -40,8 +40,8 @@ public abstract class BasePage {
     private By womenTops = By.id("ui-id-9");
     private By womenTopsJackets = By.id("ui-id-11");
     private By womenTopsHoodiesSweatshirts = By.id("ui-id-12");
-    private By womenTopsTees= By.id("ui-id-13");
-    private By womenTopsBrasTanks= By.id("ui-id-14");
+    private By womenTopsTees = By.id("ui-id-13");
+    private By womenTopsBrasTanks = By.id("ui-id-14");
     private By womenBottoms = By.id("ui-id-10");
     private By womenBottomsPants = By.id("ui-id-15");
     private By womenBottomsShorts = By.id("ui-id-16");
@@ -85,7 +85,7 @@ public abstract class BasePage {
     private By cancelButtonForRemovingCompareProduct = By.className("action-secondary action-dismiss");
     private By recentlyOrderedText = By.id("block-reorder-heading");
     private By recentlyOrderedProducts = By.id("cart-sidebar-reorder");
-    private List<WebElement> products = finds(recentlyOrderedProducts);
+    private List<WebElement> recentlyOrderedProduct = finds(recentlyOrderedProducts);
     private By recenlyOrderedAddToCartButton = By.xpath("//*[@id='cart-sidebar-reorder-advice-container']//button" +
             "[@title='Add to Cart']");
     private By recentlyOrderedViewAllLink = By.linkText("View All");
@@ -99,7 +99,8 @@ public abstract class BasePage {
     private By toolbarAmount = By.id("toolbar-amount");
     private By sortByDropDown = By.id("sorter");
     private By showProductPerPageDropDown = By.id("limiter");
-
+    private By products = By.className("products list items product-items");
+    private List<WebElement> product = finds(products);
     private By hotSellersProducts = By.cssSelector(".product-items.widget-product-grid");
     private List<WebElement> hotProducts = finds(hotSellersProducts);
 
@@ -115,99 +116,150 @@ public abstract class BasePage {
 
 
     public abstract String getPageURL();
-    protected void open() {driver.navigate().to(getPageURL());}
-    protected WebElement find(By locator){
+    protected abstract By getLocatorByName(String nameOfLocator);
+    protected void open() {
+        driver.navigate().to(getPageURL());
+    }
+
+    protected WebElement find(By locator) {
         return driver.findElement(locator);
     }
-    protected List<WebElement> finds(By locator){
+
+    protected List<WebElement> finds(By locator) {
         return driver.findElements(locator);
     }
-    protected void click(By locator){
+
+    protected void click(By locator) {
         find(locator).click();
     }
-    protected void clear(By locator){
+
+    protected void clear(By locator) {
         find(locator).clear();
     }
+
     protected void sendKeys(By locator, String text) {
         find(locator).sendKeys(text);
     }
-    protected String getText(By locator){
+
+    protected String getText(By locator) {
         return find(locator).getText();
     }
-    public LoginPage clickOnSignIn(){
+
+    public LoginPage clickOnSignIn() {
         click(signIn);
         return new LoginPage();
     }
-    public RegistrationPage clickOnACreateAnAccount(){
+
+    public RegistrationPage clickOnACreateAnAccount() {
         click(createAnAccount);
         return new RegistrationPage();
     }
-    public MyAccountPage clickOnMyAccount(){
+
+    public MyAccountPage clickOnMyAccount() {
         click(customerMenuButton);
         click(myAccount);
         return new MyAccountPage();
     }
-    public HomePage clickOnSignOut(){
+
+    public HomePage clickOnSignOut() {
         click(customerMenuButton);
         click(signOut);
         return new HomePage();
     }
-    public WhatsNewPage clickOnWhatsNew(){
+
+    public WhatsNewPage clickOnWhatsNew() {
         click(whatsNews);
         return new WhatsNewPage();
     }
-    public WomenPage clickOnWomen(){
+
+    public WomenPage clickOnWomen() {
         click(women);
         return new WomenPage();
     }
-    public MenPage clickOnMen(){
+
+    public MenPage clickOnMen() {
         click(men);
         return new MenPage();
     }
-    public GearPage clickOnGear(){
+
+    public GearPage clickOnGear() {
         click(gear);
         return new GearPage();
     }
-    public TrainingPage clickOnTraining(){
+
+    public TrainingPage clickOnTraining() {
         click(training);
         return new TrainingPage();
     }
-    public SalePage clickOnSale(){
+
+    public SalePage clickOnSale() {
         click(sale);
         return new SalePage();
     }
-    public void clickOnSubCategoryOnNavigationBar(WebDriver driver, By categoryName , By subCategory){
+
+    public void clickOnSubCategoryOnNavigationBar(WebDriver driver, By categoryName, By subCategory) {
         Actions actions = new Actions(driver);
         actions.moveToElement((WebElement) categoryName).perform();
         click(subCategory);
     }
-   public void clickOnSubSubCategoryOnNavigationBar(WebDriver driver,By categoryName , By subCategory ,
-                                                  By subSubCategory){
-       Actions actions = new Actions(driver);
-       actions.moveToElement((WebElement) categoryName).perform();
-       actions.moveToElement((WebElement) subCategory).perform();
-       click(subSubCategory);
-   }
-    public void clickOnSubCategoryOnSideBar(By subCategoryType,String subCategoryName){
+
+    public void clickOnSubSubCategoryOnNavigationBar(WebDriver driver, By categoryName, By subCategory,
+                                                     By subSubCategory) {
+        Actions actions = new Actions(driver);
+        actions.moveToElement((WebElement) categoryName).perform();
+        actions.moveToElement((WebElement) subCategory).perform();
+        click(subSubCategory);
+    }
+
+    public void clickOnSubCategoryOnSideBar(By subCategoryType, String subCategoryName) {
         var allSubCategory = finds(subCategoryType);
-        for(var subCategory : allSubCategory){
-            if(getText((By)subCategory).equals(subCategoryName)){
-                click((By)subCategory);
+        for (var subCategory : allSubCategory) {
+            if (getText((By) subCategory).equals(subCategoryName)) {
+                click((By) subCategory);
             }
         }
     }
-    public int getNumberOfCompareProducts(By locator){
+
+    public int getNumberOfCompareProducts(By locator) {
         var compareProducts = finds(locator).size();
         return compareProducts;
     }
-    public String getPageMessage(){
+
+    public String getPageMessage() {
         return getText(message);
     }
-    public String userIsLogin(){
+
+    public String userIsLogin() {
         return getText(login);
     }
-    public String userIsNonLogin(){
+
+    public String userIsNonLogin() {
         return getText(nonLogin);
     }
+
+    public String getPageTitle() {
+        return getText(pageTitle);
+    }
+
+    public int getNumberOfProductsOnPage() {
+        return product.size();
+    }
+
+    public void scrollDownToElement(WebDriver driver, String nameOfLocator) {
+        By locator = getLocatorByName(nameOfLocator);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView();", find(locator));
+    }
+    public boolean isElementDisplayed(String nameOfLocator) {
+        try {
+            By locator = getLocatorByName(nameOfLocator);
+            return driver.findElement(locator).isDisplayed();
+        } catch (NoSuchElementException | StaleElementReferenceException e) {
+            return false;
+        }
+    }
+
 }
+
+
 

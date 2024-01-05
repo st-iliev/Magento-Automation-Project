@@ -8,8 +8,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
 
 public class RegistrationSteps {
+    private WebDriver driver;
     private BasePage basePage;
     private RegistrationPage registrationPage;
     private MyAccountPage myAccountPage;
@@ -45,7 +47,7 @@ public class RegistrationSteps {
     }
     @Then("the user is redirected to account page")
     public void thenUserIsRedirectedToAccountPage() {
-        Assert.assertEquals(basePage.driver.getCurrentUrl(),myAccountPage.getPageURL());
+        Assert.assertEquals(driver.getCurrentUrl(),myAccountPage.getPageURL());
     }
 
     //Scenario Outline: Registration a new user with missing credential

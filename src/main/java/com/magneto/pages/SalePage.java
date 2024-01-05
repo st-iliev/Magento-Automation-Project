@@ -15,9 +15,40 @@ public class SalePage extends BasePage{
     private By mensBargains = By.className("block-promo sale-mens");
     private By lumaGearSteals = By.className("block-promo sale-women");
     private By womensTshirts = By.className("block-promo sale-womens-t-shirts");
+    private By discountBanner = By.className("block-promo sale-20-off");
+    private By freeShippingBanner = By.className("block-promo sale-free-shipping");
 
     @Override
     public String getPageURL() {
         return "https://magento.softwaretestingboard.com/sale.html";
+    }
+
+    @Override
+    protected By getLocatorByName(String nameOfLocator) {
+        switch (nameOfLocator) {
+            case "womenDeals":
+                return womensDeals;
+            case "mensBargains":
+                return mensBargains;
+            case "lumaGearSteals":
+                return lumaGearSteals;
+            case "womensTshirts":
+                return womensTshirts;
+            default:
+                throw new IllegalArgumentException("Locator with name '" + nameOfLocator + "' not found.");
+        }
+    }
+
+    public void clickOnWomenDealsBanner(){
+        click(womensDeals);
+    }
+    public void clickOnMensBargainsBanner(){
+        click(mensBargains);
+    }
+    public void clickOnLumaGearStealsBanner(){
+        click(lumaGearSteals);
+    }
+    public void clickOnWomensTshirtsBanner(){
+        click(womensTshirts);
     }
 }

@@ -14,4 +14,9 @@ public class GearPage extends BasePage{
     public String getPageURL() {
         return "https://magento.softwaretestingboard.com/gear.html";
     }
+
+    @Override
+    protected By getLocatorByName(String nameOfLocator) {
+        return null;
+    }
 }
